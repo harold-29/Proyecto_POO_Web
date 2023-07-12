@@ -1,0 +1,6 @@
+
+  public BD_PAG_WEBDataContext() :
+  base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BD_TIENDA_WEB_HAROLDConnectionString"].ConnectionString, mappingSource)
+{
+   OnCreated();
+}

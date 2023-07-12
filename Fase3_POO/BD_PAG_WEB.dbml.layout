@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.125" name="BD_PAG_WEB">
+  <DataContextMoniker Name="/BD_PAG_WEBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fbc8727c-0bcd-40c4-88d8-63bdf9162d4e" absoluteBounds="0.75, 4.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BD_PAG_WEBDataContext/CATEGORIAS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="83711ad5-df6b-4244-9de6-3fd2655e4379" absoluteBounds="0.765, 4.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6db042d5-764e-4245-905f-6695ee97b6d7" absoluteBounds="3.5, 6.75, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/BD_PAG_WEBDataContext/CLIENTES" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6535cf7f-1114-4d1f-acb4-46d62b96b156" absoluteBounds="3.515, 7.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="56ce6175-b0c2-423d-89e2-7e191cfe4be0" absoluteBounds="6.25, 1, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/BD_PAG_WEBDataContext/COMENTARIOS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54002dcd-fcda-45d2-b2ea-bae6d69fdfd0" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="33f5a630-8c60-460d-b8af-0deb5ff599d2" absoluteBounds="6.25, 4.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BD_PAG_WEBDataContext/DETALLE_PEDIDO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66dc2bc3-656d-45ea-87b1-3052e1b8bd38" absoluteBounds="6.265, 4.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e89d65c9-36f6-4d36-b943-cb1ff1976f43" absoluteBounds="6.25, 6.25, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BD_PAG_WEBDataContext/IMG_PRODUCTOS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="39b7d633-6216-45be-bc02-7be3cbea8422" absoluteBounds="6.265, 6.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b31dca3-f683-4902-b1ff-fb97f743d6f4" absoluteBounds="3.5, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BD_PAG_WEBDataContext/PEDIDOS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fbd2c2cd-c50d-453a-b46e-630d0cdd4381" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b4917f2f-b9d5-4b8d-8b1c-cd19e9ce2230" absoluteBounds="3.5, 3.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BD_PAG_WEBDataContext/PRODUCTOS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc0db031-f5c1-4ba1-a968-8e4beac5f589" absoluteBounds="3.515, 4.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 6.75); (5.875 : 6.375); (5.875 : 1.88544840494792); (6.25 : 1.88544840494792)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BD_PAG_WEBDataContext/CLIENTES/CLIENTES_COMENTARIOS" />
+      <nodes>
+        <classShapeMoniker Id="6db042d5-764e-4245-905f-6695ee97b6d7" />
+        <classShapeMoniker Id="56ce6175-b0c2-423d-89e2-7e191cfe4be0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.84242175140224); (5.81607443490112 : 3.15849618630336 : JumpStart); (5.99642556509888 : 3.33884731650112 : JumpEnd); (6.0625 : 3.40492175140224); (6.0625 : 4.81814697265625); (6.25 : 4.81814697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BD_PAG_WEBDataContext/PEDIDOS/PEDIDOS_DETALLE_PEDIDO" />
+      <nodes>
+        <classShapeMoniker Id="3b31dca3-f683-4902-b1ff-fb97f743d6f4" />
+        <classShapeMoniker Id="33f5a630-8c60-460d-b8af-0deb5ff599d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.50153746153846 : 6.75); (3.125 : 6.37346253846154); (3.125 : 3.28049967447917); (3.5 : 2.90549967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BD_PAG_WEBDataContext/CLIENTES/CLIENTES_PEDIDOS" />
+      <nodes>
+        <classShapeMoniker Id="6db042d5-764e-4245-905f-6695ee97b6d7" />
+        <classShapeMoniker Id="3b31dca3-f683-4902-b1ff-fb97f743d6f4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 3.81153746153846); (5.81607443490112 : 3.49546302663734 : JumpStart); (5.93392556509888 : 3.37761189643958 : JumpEnd); (5.9375 : 3.37403746153846); (5.9375 : 2.35942460742187); (6.25 : 2.35942460742187)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BD_PAG_WEBDataContext/PRODUCTOS/PRODUCTOS_COMENTARIOS" />
+      <nodes>
+        <classShapeMoniker Id="b4917f2f-b9d5-4b8d-8b1c-cd19e9ce2230" />
+        <classShapeMoniker Id="56ce6175-b0c2-423d-89e2-7e191cfe4be0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.40907348632813); (5.79166666666667 : 4.40907348632812 : JumpStart); (5.95833333333333 : 4.40907348632813 : JumpEnd); (5.97916666666667 : 4.40907348632812 : JumpStart); (6.14583333333333 : 4.40907348632813 : JumpEnd); (6.25 : 4.40907348632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BD_PAG_WEBDataContext/PRODUCTOS/PRODUCTOS_DETALLE_PEDIDO" />
+      <nodes>
+        <classShapeMoniker Id="b4917f2f-b9d5-4b8d-8b1c-cd19e9ce2230" />
+        <classShapeMoniker Id="33f5a630-8c60-460d-b8af-0deb5ff599d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 5.84396021294071); (5.81607443490112 : 6.16003464784183 : JumpStart); (5.93392556509888 : 6.27788577803958 : JumpEnd); (6.0625 : 6.40646021294071); (6.0625 : 6.0625); (6.25 : 6.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BD_PAG_WEBDataContext/PRODUCTOS/PRODUCTOS_IMG_PRODUCTOS" />
+      <nodes>
+        <classShapeMoniker Id="b4917f2f-b9d5-4b8d-8b1c-cd19e9ce2230" />
+        <classShapeMoniker Id="e89d65c9-36f6-4d36-b943-cb1ff1976f43" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.81814697265625); (3.04166666666667 : 4.81814697265625 : JumpStart); (3.20833333333333 : 4.81814697265625 : JumpEnd); (3.5 : 4.81814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BD_PAG_WEBDataContext/CATEGORIAS/CATEGORIAS_PRODUCTOS" />
+      <nodes>
+        <classShapeMoniker Id="fbc8727c-0bcd-40c4-88d8-63bdf9162d4e" />
+        <classShapeMoniker Id="b4917f2f-b9d5-4b8d-8b1c-cd19e9ce2230" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

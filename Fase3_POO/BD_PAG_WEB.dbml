@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BD_TIENDA_WEB_HAROLD" Class="BD_PAG_WEBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.CATEGORIAS" Member="CATEGORIAS">
+    <Type Name="CATEGORIAS">
+      <Column Name="ID_CATEGORIA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_CATEGORIA" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPCION_CATEGORIA" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Association Name="CATEGORIAS_PRODUCTOS" Member="PRODUCTOS" ThisKey="ID_CATEGORIA" OtherKey="CATEGORIA_PRODUCTO" Type="PRODUCTOS" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CLIENTES" Member="CLIENTES">
+    <Type Name="CLIENTES">
+      <Column Name="COD_CLIENTE" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_CLIENTE" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDO1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDO2" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="E_MAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TELEFONO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PROVINCIA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CANTON" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DIRECCION" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ESTADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="CLIENTES_COMENTARIOS" Member="COMENTARIOS" ThisKey="COD_CLIENTE" OtherKey="ID_CLIENTE" Type="COMENTARIOS" />
+      <Association Name="CLIENTES_PEDIDOS" Member="PEDIDOS" ThisKey="COD_CLIENTE" OtherKey="COD_CLIENTE" Type="PEDIDOS" />
+    </Type>
+  </Table>
+  <Table Name="dbo.COMENTARIOS" Member="COMENTARIOS">
+    <Type Name="COMENTARIOS">
+      <Column Name="ID_COMENTARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_CLIENTE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_PRODUCTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TEXTO_COMENTARIO" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="VALORACION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CLIENTES_COMENTARIOS" Member="CLIENTES" ThisKey="ID_CLIENTE" OtherKey="COD_CLIENTE" Type="CLIENTES" IsForeignKey="true" />
+      <Association Name="PRODUCTOS_COMENTARIOS" Member="PRODUCTOS" ThisKey="ID_PRODUCTO" OtherKey="ID_PRODUCTO" Type="PRODUCTOS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DETALLE_PEDIDO" Member="DETALLE_PEDIDO">
+    <Type Name="DETALLE_PEDIDO">
+      <Column Name="ID_DETALLE_PEDIDO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PEDIDO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PRODUCTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PEDIDOS_DETALLE_PEDIDO" Member="PEDIDOS" ThisKey="ID_PEDIDO" OtherKey="ID_PEDIDO" Type="PEDIDOS" IsForeignKey="true" />
+      <Association Name="PRODUCTOS_DETALLE_PEDIDO" Member="PRODUCTOS" ThisKey="ID_PRODUCTO" OtherKey="ID_PRODUCTO" Type="PRODUCTOS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IMG_PRODUCTOS" Member="IMG_PRODUCTOS">
+    <Type Name="IMG_PRODUCTOS">
+      <Column Name="ID_IMG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PRODUCTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_IMG" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="PRODUCTOS_IMG_PRODUCTOS" Member="PRODUCTOS" ThisKey="ID_PRODUCTO" OtherKey="ID_PRODUCTO" Type="PRODUCTOS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PEDIDOS" Member="PEDIDOS">
+    <Type Name="PEDIDOS">
+      <Column Name="ID_PEDIDO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="COD_CLIENTE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DESCUENTO_PEDIDO" Type="System.Decimal" DbType="Decimal(3,1)" CanBeNull="true" />
+      <Column Name="COSTO_TOTAL" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_PEDIDO" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ESTADO_PEDIDO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DIRECCION_ENVIO" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="PEDIDOS_DETALLE_PEDIDO" Member="DETALLE_PEDIDO" ThisKey="ID_PEDIDO" OtherKey="ID_PEDIDO" Type="DETALLE_PEDIDO" />
+      <Association Name="CLIENTES_PEDIDOS" Member="CLIENTES" ThisKey="COD_CLIENTE" OtherKey="COD_CLIENTE" Type="CLIENTES" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTOS" Member="PRODUCTOS">
+    <Type Name="PRODUCTOS">
+      <Column Name="ID_PRODUCTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_PRODUCTO" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORIA_PRODUCTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="COSTO_PRODUCTO" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FABRICANTE" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="CANTIDAD_STOCK" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Association Name="PRODUCTOS_COMENTARIOS" Member="COMENTARIOS" ThisKey="ID_PRODUCTO" OtherKey="ID_PRODUCTO" Type="COMENTARIOS" />
+      <Association Name="PRODUCTOS_DETALLE_PEDIDO" Member="DETALLE_PEDIDO" ThisKey="ID_PRODUCTO" OtherKey="ID_PRODUCTO" Type="DETALLE_PEDIDO" />
+      <Association Name="PRODUCTOS_IMG_PRODUCTOS" Member="IMG_PRODUCTOS" ThisKey="ID_PRODUCTO" OtherKey="ID_PRODUCTO" Type="IMG_PRODUCTOS" />
+      <Association Name="CATEGORIAS_PRODUCTOS" Member="CATEGORIAS" ThisKey="CATEGORIA_PRODUCTO" OtherKey="ID_CATEGORIA" Type="CATEGORIAS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SP_AGREGAR_ACTUALIZAR_CLIENTE" Method="SP_AGREGAR_ACTUALIZAR_CLIENTE">
+    <Parameter Name="codCliente" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="idCliente" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="apellido1" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="apellido2" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="provincia" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="canton" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_AGREGAR_ACTUALIZAR_PEDIDO" Method="SP_AGREGAR_ACTUALIZAR_PEDIDO">
+    <Parameter Name="codCliente" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="idPedido" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="costo" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="descuento" Type="System.Decimal" DbType="Decimal(3,1)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_AGREGAR_DETALLE_PEDIDO" Method="SP_AGREGAR_DETALLE_PEDIDO">
+    <Parameter Name="idPedido" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_AGREGAR_MODIFICAR_COMENTARIO" Method="SP_AGREGAR_MODIFICAR_COMENTARIO">
+    <Parameter Name="idComentario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idCliente" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="texto" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="valoracion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_AGREGAR_MODIFICAR_PRODUCTO" Method="SP_AGREGAR_MODIFICAR_PRODUCTO">
+    <Parameter Name="idProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="categoria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="costo" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="fabricante" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descripcion" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ELIMINAR_CLIENTE" Method="SP_ELIMINAR_CLIENTE">
+    <Parameter Name="codCliente" Type="System.Int32" DbType="Int" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ELIMINAR_COMENTARIO" Method="SP_ELIMINAR_COMENTARIO">
+    <Parameter Name="idComentario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ELIMINAR_DETALLE_PEDIDO" Method="SP_ELIMINAR_DETALLE_PEDIDO">
+    <Parameter Name="idPedido" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ELIMINAR_PEDIDO" Method="SP_ELIMINAR_PEDIDO">
+    <Parameter Name="idPedido" Type="System.Int32" DbType="Int" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
