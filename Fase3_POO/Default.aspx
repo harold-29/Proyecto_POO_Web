@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
 
-    <div class="container">
+    <div class="container destacados">
 
         <%--Carrusel--%>
         <div class="row ">

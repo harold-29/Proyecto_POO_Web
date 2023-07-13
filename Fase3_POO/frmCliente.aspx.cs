@@ -9,7 +9,7 @@ namespace Fase3_POO
 {
     public partial class frmCliente : System.Web.UI.Page
     {
-        int idC = 1;
+        int idC = -1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,13 +17,12 @@ namespace Fase3_POO
 
             if (!IsPostBack)
             {
+                idC = Convert.ToInt32(Session["CODCliente"]);
 
-                //idC = Convert.ToInt32(Request.QueryString["idC"]);
                 ObtenerCliente(idC);
 
                 ObtenerProvincias();
 
-                Session["CODCliente"] = idC;
             }
 
         }

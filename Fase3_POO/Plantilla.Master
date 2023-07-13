@@ -8,7 +8,6 @@
     <title>Tienda Online</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Styles.css" rel="stylesheet" />
-    <script src="Script.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -47,18 +46,17 @@
                     </div>
 
                     <ul class="navbar-nav my-2 ms-5 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                        <li class="nav-item"> 
-                            <a class="nav-link active btn btn-warning" aria-current="page" href="frmLogin.aspx">
-                                Iniciar Sesión
+                        <li class="nav-item">
+                            <a class="nav-link active btn btn-warning" aria-current="page" href="frmLogin.aspx?idc=-1" id="aLogin">Iniciar Sesión
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="frmCliente.aspx">
+                            <a class="nav-link active" aria-current="page" href="frmCliente.aspx" id="aCuenta">
                                 <i class="fa-solid fa-user" style="color: #000000;"></i>
                             </a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link active" aria-current="page" href="frmCarrito.aspx">
+                            <a class="nav-link active" aria-current="page" href="frmCarrito.aspx" id="aCarrito">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </a>
                         </li>
@@ -113,9 +111,10 @@
         </div>
     </footer>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/db9da4ce5b.js" crossorigin="anonymous"></script>
     <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Script.js"></script>
 
 </body>
 </html>

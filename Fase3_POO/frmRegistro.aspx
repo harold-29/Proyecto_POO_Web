@@ -26,7 +26,7 @@
 
                 <div class="col mt-2">
                     <p>Identificación</p>
-                    <asp:TextBox ID="txtID" runat="server" ReadOnly="True" MaxLength="15" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtID" runat="server" MaxLength="15" CssClass="form-control"></asp:TextBox>
                 </div>
 
                 <div class="col mt-2">

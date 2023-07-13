@@ -23,6 +23,7 @@ namespace Fase3_POO
                     Session["ListaProductos"] = new List<PRODUCTOS>();
                 }
 
+
                 if (Session["CODCliente"] == null)
                 {
                     Session["CODCliente"] = -1;

@@ -36,7 +36,7 @@ namespace Fase3_POO
 
                         Session["CODCliente"] = id;
 
-                        //Response.Redirect("Default.aspx");
+                        Response.Redirect("Default.aspx");
 
                     }
                     else

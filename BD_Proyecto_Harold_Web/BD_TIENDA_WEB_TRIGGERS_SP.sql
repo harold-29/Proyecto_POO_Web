@@ -327,8 +327,8 @@ BEGIN
 
 			IF (NOT EXISTS (SELECT 1 FROM CLIENTES WHERE ID_CLIENTE = @idCliente))
 				BEGIN
-					INSERT INTO CLIENTES(NOMBRE,APELLIDO1,APELLIDO2,E_MAIL,TELEFONO,PROVINCIA,CANTON,DIRECCION,FECHA_NACIMIENTO)
-					VALUES (@nombre,@apellido1,@apellido2,@email,@telefono,@provincia,@canton,@direccion,@fecha);
+					INSERT INTO CLIENTES(ID_CLIENTE,NOMBRE,APELLIDO1,APELLIDO2,E_MAIL,TELEFONO,PROVINCIA,CANTON,DIRECCION,FECHA_NACIMIENTO)
+					VALUES (@idCliente,@nombre,@apellido1,@apellido2,@email,@telefono,@provincia,@canton,@direccion,@fecha);
 
 					SET @msj = 'Cliente ingresado con éxito';
 

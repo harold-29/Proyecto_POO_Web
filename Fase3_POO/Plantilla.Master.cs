@@ -9,13 +9,10 @@ namespace Fase3_POO
 {
     public partial class Plantilla : System.Web.UI.MasterPage
     {
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
 
     }
 }

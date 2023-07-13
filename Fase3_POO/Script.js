@@ -41,3 +41,29 @@ function redirectToSearch() {
     let url = "frmBusqueda.aspx?buscar=" + buscar; // Construir la URL de destino con el valor del TextBox
     window.location.href = url; // Redireccionar a la página de destino
 }
+
+function mostrarCliente() {
+
+    // Obtener el valor de un parámetro específico
+    //const urlParams = new URLSearchParams(window.location.search);
+    //const idc = urlParams.get('idC');
+
+    //let btn = document.getElementById("aLogin");
+    //let cuenta = document.getElementById("aCuenta");
+    //let carro = document.getElementById("aCarrito");
+
+    //if (idc != -1) {
+
+    //    btn.style.display = "none";
+    //    cuenta.style.display = "block";
+    //    carro.style.display = "block";
+
+    //} else {
+    //    btn.style.display = "block";
+    //    cuenta.style.display = "none";
+    //    carro.style.display = "none";
+
+    //}
+
+
+}

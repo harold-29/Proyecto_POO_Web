@@ -85,13 +85,19 @@ namespace Fase3_POO
 
                     Session["CODCliente"] = i;
 
+                   
+
+                }
+                else
+                {
+                    //Mensaje
                 }
 
             }
             catch (Exception)
             {
 
-                //throw;
+                //solucion
             }
 
         }
