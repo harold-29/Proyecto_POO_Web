@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,7 +10,7 @@ namespace Fase3_POO
 {
     public partial class frmRegistro : System.Web.UI.Page
     {
-
+        string script = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,10 +18,14 @@ namespace Fase3_POO
 
             if (!IsPostBack)
             {
-
                 ObtenerProvincias();
-
             }
+
+            //script = string.Format("mm('{0}');", "hola");
+            //ScriptManager.RegisterStartupScript(this,typeof(string), "MostrarError", script, true);
+
+            script = string.Format("mostrarModalJS();");
+            ScriptManager.RegisterStartupScript(this, typeof(string), "MostrarError", script, true);
 
         }
 
@@ -45,7 +50,7 @@ namespace Fase3_POO
 
         }
 
-      
+
 
         private bool ValidarArgumentos()
         {
@@ -73,11 +78,15 @@ namespace Fase3_POO
             string msj = string.Empty;
 
             int? i = 0;
-
-            DateTime? fn = Convert.ToDateTime(txtFechaNacimiento.Text); // Fecha de nacimiento
+            DateTime? fn = new DateTime();
 
             try
             {
+                if (!string.IsNullOrEmpty(txtFechaNacimiento.Text))
+                {
+                    fn = Convert.ToDateTime(txtFechaNacimiento.Text); // Fecha de nacimiento
+
+                }
 
                 if (ValidarArgumentos())
                 {
@@ -85,13 +94,14 @@ namespace Fase3_POO
 
                     Session["CODCliente"] = i;
 
-                   
 
                 }
                 else
                 {
                     //Mensaje
                 }
+
+                mostrarError();
 
             }
             catch (Exception)
@@ -101,5 +111,16 @@ namespace Fase3_POO
             }
 
         }
+
+        private void mostrarError()
+        {
+
+            string script = $"mm({"hola"});";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
+
+
+
     }
 }

@@ -67,3 +67,12 @@ function mostrarCliente() {
 
 
 }
+
+//const errorModal = new bootstrap.Modal(document.getElementById("modalError"));
+
+//function mostrarModalJS() {
+//    //alert(texto);
+//    $('#modalError').modal('show');
+//    errorModal.show();
+//}
+//window.onload = mostrarModalJS;

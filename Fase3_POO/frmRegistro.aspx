@@ -1,12 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.Master" AutoEventWireup="true" CodeBehind="frmRegistro.aspx.cs" Inherits="Fase3_POO.frmRegistro" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        function mm(mensaje) {
+            alert(mensaje);
+        }
+
+
+        function mostrarModalJS() {
+            const errorModal = new bootstrap.Modal(document.getElementById("modalError"));
+            errorModal.show();
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
     <div class="container bd-main col">
         <h2 class="h2">Ingresa tus datos</h2>
 
-        <form runat="server">
+        <form runat="server" id="formRegistro">
+            <asp:ScriptManager runat="server" ID="ScriptManager" />
+
             <div class="row row-cols-1 mt-5 row-cols-md-3">
 
                 <div class="col mt-2">
@@ -92,6 +106,29 @@
                 </div>
             </div>
 
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalError">
+                Launch static backdrop modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalError" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Algo salio mal!!</h1>
+                        </div>
+                        <div class="modal-body">
+                            <p id="mensaje" runat="server">.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </form>
+
     </div>
 </asp:Content>

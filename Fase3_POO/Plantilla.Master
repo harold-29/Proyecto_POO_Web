@@ -8,6 +8,7 @@
     <title>Tienda Online</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Styles.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
