@@ -35,7 +35,7 @@
             <h2>Destacados</h2>
         </div>
 
-        <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3">
+        <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3 destacados-panel">
         </asp:Panel>
     </div>
 

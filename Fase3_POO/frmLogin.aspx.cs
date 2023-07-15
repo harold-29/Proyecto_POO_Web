@@ -13,6 +13,13 @@ namespace Fase3_POO
         {
 
         }
+        private void mostrarError(string msj)
+        {
+
+            string script = $"mostrarMensaje({msj});";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -41,18 +48,18 @@ namespace Fase3_POO
                     }
                     else
                     {
-                        //Mensaje de no encontrado
+                        mostrarError("No se encontro el número de usuario");
                     }
 
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
-            }
+                mostrarError(ex.Message);
 
+            }
 
         }
     }

@@ -1,17 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.Master" AutoEventWireup="true" CodeBehind="frmRegistro.aspx.cs" Inherits="Fase3_POO.frmRegistro" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-        function mm(mensaje) {
-            alert(mensaje);
-        }
-
-
-        function mostrarModalJS() {
-            const errorModal = new bootstrap.Modal(document.getElementById("modalError"));
-            errorModal.show();
-        }
-    </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
@@ -102,7 +91,6 @@
 
                 <div class="col my-5 ">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Registro" />
-
                 </div>
             </div>
 

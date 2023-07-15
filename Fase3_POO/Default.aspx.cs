@@ -32,6 +32,13 @@ namespace Fase3_POO
             }
 
         }
+        private void mostrarError(string msj)
+        {
+
+            string script = $"mostrarMensaje({msj});";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
 
         private List<int> ObtenerIdsProductos()
         {
@@ -48,19 +55,28 @@ namespace Fase3_POO
                                orderby grupo.Count() descending
                                select grupo.Key;
 
-                productos = consulta.Take(4).ToList();
+                if (consulta.Count() > 0)
+                {
+                    productos = consulta.Take(4).ToList();
+                    return productos;
+
+                }
+                else
+                {
+                    mostrarError("No se encontraron productos");
+                }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //TODO: agregar mensaje de null
+                mostrarError(ex.Message);
+
 
             }
 
             return productos;
-
 
         }
 
@@ -79,7 +95,7 @@ namespace Fase3_POO
 
                     var consulta = from producto in dc.PRODUCTOS
                                    join imagen in dc.IMG_PRODUCTOS on producto.ID_PRODUCTO equals imagen.ID_PRODUCTO
-                                   where producto.ID_PRODUCTO == p //TODO: CAMBIAR 1 POR p
+                                   where producto.ID_PRODUCTO == p
                                    select new
                                    {
                                        nombre = producto.NOMBRE_PRODUCTO,
@@ -88,24 +104,35 @@ namespace Fase3_POO
 
                                    };
 
-                    var primerElemento = consulta.FirstOrDefault();
+                    if (consulta.Count() > 0)
+                    {
+                        var primerElemento = consulta.FirstOrDefault();
 
-                    // Crea una nueva instancia del control Card y establece sus propiedades
-                    Card card = new Card();
-                    card.Id = p;
-                    card.Nombre = primerElemento.nombre;
-                    card.Costo = primerElemento.costo;
-                    card.Img = primerElemento.img;
+                        // Crea una nueva instancia del control Card y establece sus propiedades
+                        Card card = new Card();
+                        card.Id = p;
+                        card.Nombre = primerElemento.nombre;
+                        card.Costo = primerElemento.costo;
+                        card.Img = primerElemento.img;
 
-                    // Agrega la card al contenedor de productos
-                    Panel1.Controls.Add(card);
+                        // Agrega la card al contenedor de productos
+                        Panel1.Controls.Add(card);
+
+                    }
+                    else
+                    {
+                        mostrarError("No se encontrón el producto");
+                    }
+
+
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //TODO: agregar mensaje de null
+                mostrarError(ex.Message);
+
 
             }
 

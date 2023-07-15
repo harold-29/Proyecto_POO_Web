@@ -29,7 +29,13 @@ namespace Fase3_POO
             }
 
         }
+        private void mostrarError(string msj)
+        {
 
+            string script = $"mostrarMensaje({msj});";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
         private List<int> ProductoAscendete()
         {
 
@@ -38,6 +44,7 @@ namespace Fase3_POO
             var minPrice = Convert.ToDecimal(txtMinPrice.Text);
             var maxPrice = Convert.ToDecimal(txtMaxPrice.Text);
 
+            List<int> idsProductos = new List<int>();
 
             try
             {
@@ -47,18 +54,25 @@ namespace Fase3_POO
                                orderby producto.COSTO_PRODUCTO ascending
                                select producto.ID_PRODUCTO;
 
-                List<int> idsProductos = consulta.ToList();
+                if (consulta.Count() > 0)
+                {
+                    idsProductos = consulta.ToList();
+                    return idsProductos;
 
-                return idsProductos;
-
+                }
+                else
+                {
+                    mostrarError("No se encontraron productos");
+                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
-            }
+                mostrarError(ex.Message);
 
+            }
+            return idsProductos;
 
         }
 
@@ -69,6 +83,7 @@ namespace Fase3_POO
             var minPrice = Convert.ToDecimal(txtMinPrice.Text);
             var maxPrice = Convert.ToDecimal(txtMaxPrice.Text);
 
+            List<int> idsProductos = new List<int>();
 
             try
             {
@@ -78,17 +93,27 @@ namespace Fase3_POO
                                orderby producto.COSTO_PRODUCTO descending
                                select producto.ID_PRODUCTO;
 
-                List<int> idsProductos = consulta.ToList();
+                if (consulta.Count() > 0)
+                {
+                    idsProductos = consulta.ToList();
+                    return idsProductos;
 
-                return idsProductos;
+                }
+                else
+                {
+                    mostrarError("No se encontraron productos");
+                }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                mostrarError(ex.Message);
+
             }
+            return idsProductos;
+
         }
 
         private void GenerarProductos()
@@ -152,10 +177,11 @@ namespace Fase3_POO
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //throw;
+                mostrarError(ex.Message);
+
             }
 
         }
@@ -175,9 +201,10 @@ namespace Fase3_POO
                 return consulta;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Mensaje de no encontrado
+                mostrarError(ex.Message);
+
                 return 0;
             }
 

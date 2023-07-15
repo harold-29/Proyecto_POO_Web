@@ -22,10 +22,12 @@ namespace Fase3_POO
             writer.AddAttribute(HtmlTextWriterAttribute.Class, "card-img-top");
             writer.AddAttribute(HtmlTextWriterAttribute.Src, $"{ListIMG[0]}");
             writer.AddAttribute(HtmlTextWriterAttribute.Alt, "...");
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, "imgPrincipal");
             writer.RenderBeginTag(HtmlTextWriterTag.Img);
             writer.RenderEndTag();
 
             writer.AddAttribute(HtmlTextWriterAttribute.Class, "row row-cols-4");
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, "imgsProducto");
             writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
             foreach (string img in ListIMG)

@@ -26,8 +26,13 @@ namespace Fase3_POO
             }
 
         }
+        private void mostrarError(string msj)
+        {
 
+            string script = $"mostrarMensaje({msj});";
 
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
 
         private void ObtenerProvincias()
         {
@@ -85,12 +90,18 @@ namespace Fase3_POO
                     txtFechaNacimiento.Text = fechaFormateada; // Asigna la fecha formateada al TextBox en tu página ASP.NET
 
                 }
+                else
+                {
+                    mostrarError("No se encontraron registros");
+
+                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //throw;
+                mostrarError(ex.Message);
+
             }
 
         }
@@ -99,7 +110,7 @@ namespace Fase3_POO
         private bool ValidarArgumentos()
         {
 
-            if (string.IsNullOrEmpty(txtNombre.Text) || 
+            if (string.IsNullOrEmpty(txtNombre.Text) ||
                 string.IsNullOrEmpty(txtApellido1.Text) ||
                 string.IsNullOrEmpty(txtApellido2.Text) ||
                 string.IsNullOrEmpty(txtDireccion.Value) ||
@@ -130,19 +141,29 @@ namespace Fase3_POO
 
                 if (ValidarArgumentos())
                 {
-                    dc.SP_AGREGAR_ACTUALIZAR_CLIENTE(ref i, txtID.Text, txtNombre.Text, txtApellido1.Text, txtApellido2.Text, txtEmail.Text, txtTelefono.Text, ddlProvincia.Text, txtCanton.Text, txtDireccion.Value, fn , ref msj);
+                    dc.SP_AGREGAR_ACTUALIZAR_CLIENTE(ref i, txtID.Text, txtNombre.Text, txtApellido1.Text, txtApellido2.Text, txtEmail.Text, txtTelefono.Text, ddlProvincia.Text, txtCanton.Text, txtDireccion.Value, fn, ref msj);
                 }
 
                 ObtenerCliente(idC);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //throw;
+                mostrarError(ex.Message);
             }
 
 
         }
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+
+            Session["CODCliente"] = -1;
+            Response.Redirect("Default.aspx");
+
+        }
+
+
+
     }
 }

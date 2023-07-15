@@ -8,7 +8,16 @@
     <title>Tienda Online</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Styles.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function mostrarMensaje(mensaje) {
+            alert(mensaje);
+        }
 
+        function mostrarModalJS() {
+            const errorModal = new bootstrap.Modal(document.getElementById("modalError"));
+            errorModal.show();
+        }
+    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -43,21 +52,21 @@
                     </ul>
                     <div class="d-flex" width="50%">
                         <input class="form-control me-2" id="txtBuscar" placeholder="Buscar" type="text" />
-                        <input class="btn btn-outline-primary" id="btnBuscar" type="button" value="Buscar" onclick="redirectToSearch()" />
+                        <input class="btn btn-outline-dark" id="btnBuscar" type="button" value="Buscar" onclick="redirectToSearch()" />
                     </div>
 
                     <ul class="navbar-nav my-2 ms-5 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                            <a class="nav-link active btn btn-warning" aria-current="page" href="frmLogin.aspx?idc=-1" id="aLogin">Iniciar Sesión
+                            <a runat="server" class="nav-link active btn btn-outline-warning" aria-current="page" href="frmLogin.aspx?idc=-1" id="aLogin">Iniciar Sesión
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="frmCliente.aspx" id="aCuenta">
+                            <a class="nav-link active" aria-current="page" href="frmCliente.aspx" id="aCuenta" runat="server">
                                 <i class="fa-solid fa-user" style="color: #000000;"></i>
                             </a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link active" aria-current="page" href="frmCarrito.aspx" id="aCarrito">
+                            <a class="nav-link active" aria-current="page" href="frmCarrito.aspx" id="aCarrito" runat="server">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </a>
                         </li>
@@ -85,16 +94,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Información</h5>
-                        <a href="#">Nosotros</a>
-                        <a href="#">Términos y Condiciones</a>
+                        <a class="nav-link" href="#">Nosotros</a>
+                        <a class="nav-link" href="#">Términos y Condiciones</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Recibe Ofertas</h5>
@@ -104,7 +113,7 @@
                                 <label for="Email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="Email">
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-dark">Enviar</button>
                         </form>
                     </div>
                 </div>

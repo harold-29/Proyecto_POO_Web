@@ -36,6 +36,13 @@ namespace Fase3_POO
 
         }
 
+        private void mostrarError(string msj)
+        {
+
+            string script = $"mostrarMensaje({msj});";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
 
         protected void btnEliminar_Command(object sender, CommandEventArgs e)
         {
@@ -166,10 +173,15 @@ namespace Fase3_POO
 
                             if (!string.IsNullOrEmpty(msjDP))
                             {
-                                // Se produjo un error en el procedimiento almacenado SP_AGREGAR_DETALLE_PEDIDO
+
                                 // Realizar un rollback de la transacción
                                 dc.Transaction.Rollback();
 
+
+                            }
+                            else
+                            {
+                                mostrarError(msjDP);
 
                             }
 
@@ -177,27 +189,36 @@ namespace Fase3_POO
                         }
 
 
-                        //TODO: Mensaje de Pedido Realizado
-
                         Session["ListaProductos"] = new List<PRODUCTOS>();
 
                         CargarGrid();
+                    }
+                    else
+                    {
+                        mostrarError("No se encontraron registros");
+
                     }
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                lblCostoTotal.Visible = true;
+                //lblCostoTotal.Visible = true;
 
-                lblCostoTotal.Text = "a";
-
+                //lblCostoTotal.Text = "a";
+                mostrarError(ex.Message);
             }
 
 
         }
 
-       
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+
+            Session["CODCliente"] = -1;
+            Response.Redirect("Default.aspx");
+
+        }
     }
 }

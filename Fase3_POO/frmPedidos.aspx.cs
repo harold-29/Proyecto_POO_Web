@@ -25,7 +25,13 @@ namespace Fase3_POO
 
 
         }
+        private void mostrarError(string msj)
+        {
 
+            string script = $"mostrarMensaje({msj});";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
         protected void gvPedidos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -95,8 +101,7 @@ namespace Fase3_POO
                     }
                     else
                     {
-                        //Message
-
+                        mostrarError("No se encontraron registros de los pedidos");
                     }
 
 
@@ -105,15 +110,17 @@ namespace Fase3_POO
                 }
                 else
                 {
-                    //Message
+                    mostrarError("No se encontraron registros del cliente");
+
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                mostrarError(ex.Message);
+
             }
 
         }
@@ -139,12 +146,18 @@ namespace Fase3_POO
                     gvPedidos.DataBind();
 
                 }
+                else
+                {
+                    mostrarError("No se encontró el pedido");
+
+                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                mostrarError(ex.Message);
+
             }
 
 
@@ -157,6 +170,12 @@ namespace Fase3_POO
         }
 
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
 
+            Session["CODCliente"] = -1;
+            Response.Redirect("Default.aspx");
+
+        }
     }
 }

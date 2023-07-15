@@ -22,8 +22,27 @@ namespace Fase3_POO
 
             GenerarInfo();
 
+
+            //No funciona
+            if (!IsPostBack)
+            {
+                if (!string.IsNullOrEmpty(Convert.ToString(Session["msjError"])))
+                {
+                    mostrarError(Session["msjError"].ToString());
+
+                }
+
+            }
+
+
         }
 
+        private void mostrarError(string msj)
+        {
+
+            string script = $"mostrarMensaje({msj});";
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
 
         private void GenerarImagenes()
         {
@@ -33,7 +52,7 @@ namespace Fase3_POO
             {
 
                 var consulta = (from img in dc.IMG_PRODUCTOS
-                                where img.ID_PRODUCTO == id   //TODO: cambiar 1 por id
+                                where img.ID_PRODUCTO == id
                                 select img.RUTA_IMG).Take(4);  //selecciono 4 en caso de que el producto tenga mas ya que no necesito más
 
                 if (consulta != null)
@@ -46,14 +65,15 @@ namespace Fase3_POO
                 else
                 {
 
-                    //TODO: agregar mensaje de null
+                    mostrarError("No se encontraron imágenes del producto");
+
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO: agregar mensaje de null
+                mostrarError(ex.Message);
 
             }
 
@@ -70,7 +90,7 @@ namespace Fase3_POO
             {
 
                 var consulta = from producto in dc.PRODUCTOS
-                               where producto.ID_PRODUCTO == id //TODO: cambiar 1 por id
+                               where producto.ID_PRODUCTO == id
                                select producto;
 
                 var primerRegistro = consulta.FirstOrDefault();
@@ -96,12 +116,18 @@ namespace Fase3_POO
 
 
                 }
+                else
+                {
+                    mostrarError("No se encontraron detalles del producto");
+
+                }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO: agregar mensaje de null
+                mostrarError(ex.Message);
+
 
             }
 
@@ -119,43 +145,52 @@ namespace Fase3_POO
 
             try
             {
-
-                var consulta = from p in dc.PRODUCTOS
-                               where p.ID_PRODUCTO == id
-                               select p;
-                var producto = consulta.FirstOrDefault();
-
-                 
-                if (producto != null)
+                if (Convert.ToInt32(Session["CODCLiente"]) > 0)
                 {
 
-                    if ( (Convert.ToInt32(Session["cantAdd"]) <= producto.CANTIDAD_STOCK) && (Convert.ToInt32(Session["cantAdd"]) + cant <= producto.CANTIDAD_STOCK)  ) 
+                    var consulta = from p in dc.PRODUCTOS
+                                   where p.ID_PRODUCTO == id
+                                   select p;
+                    var producto = consulta.FirstOrDefault();
+
+
+                    if (producto != null)
                     {
 
-                        for (int i = 0; i < cant; i++)
+                        if ((Convert.ToInt32(Session["cantAdd"]) <= producto.CANTIDAD_STOCK) && (Convert.ToInt32(Session["cantAdd"]) + cant <= producto.CANTIDAD_STOCK))
                         {
-                            listaProductos.Add(producto);
 
+                            for (int i = 0; i < cant; i++)
+                            {
+                                listaProductos.Add(producto);
+
+                            }
+                            Session["cantAdd"] = Convert.ToInt32(Session["cantAdd"]) + cant;
+
+                            Session["ListaProductos"] = listaProductos;
                         }
-                        Session["cantAdd"] = Convert.ToInt32(Session["cantAdd"]) + cant;
+                        else
+                        {
+                            mostrarError("No hay productos en el inventario");
+                        }
 
-                        Session["ListaProductos"] = listaProductos;
-                    }
-                    else
-                    {
-                        //TODO: agregar mensaje de no hay cantidad suficiente
 
                     }
-
+                }
+                else
+                {
+                    //No funciona
+                    Session["msjError"] = "No hay productos en el inventario";
+                    Response.Redirect($"frmProductos.aspx?id={id}");
 
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //TODO: agregar mensaje de null
+                mostrarError(ex.Message);
 
             }
 

@@ -11,29 +11,29 @@
            <form runat="server" id="form3" class="row-cols-md-1">
                 <div class="col">
                     <p>Precio mínimo</p>
-                    <asp:TextBox ID="txtMinPrice" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtMinPrice" runat="server" class="form-control"></asp:TextBox>
                 </div>
 
                 <div class="col">
                     <p>Precio máximo</p>
-                    <asp:TextBox ID="txtMaxPrice" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtMaxPrice" runat="server" class="form-control"></asp:TextBox>
                 </div>
                 
                 <div class="col mt-4 mb-2">
-                    <asp:Button ID="btnFiltro" runat="server" Text="Filtrar" OnClick="btnFiltro_Click" />
+                    <asp:Button ID="btnFiltro" runat="server" Text="Filtrar" OnClick="btnFiltro_Click" CssClass="btn btn-warning"/>
                 </div>
 
                 <hr />
 
                 <div class="col">
                     <p>Orden:</p>
-                    <asp:Button ID="btnAscendete" runat="server" Text="Menor a Mayor" OnClick="btnAscendete_Click" />
+                    <asp:Button ID="btnAscendete" runat="server" Text="Menor a Mayor" OnClick="btnAscendete_Click" CssClass="btn btn-warning"/>
 
                     <asp:CheckBox ID="chkAscendente" runat="server" Checked="True"  Visible="False" />
                 </div>
 
                 <div class="col mt-4">
-                    <asp:Button ID="btnDescendente" runat="server" Text="Mayor a Menor " OnClick="btnDescendente_Click" />
+                    <asp:Button ID="btnDescendente" runat="server" Text="Mayor a Menor " OnClick="btnDescendente_Click" CssClass="btn btn-warning"/>
 
                     <asp:CheckBox ID="chkDescendente" runat="server" onclick="toggleAscendente(this.checked)" Visible="False" />
                 </div>

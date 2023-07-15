@@ -20,7 +20,13 @@ namespace Fase3_POO
                 GenerarProductos();
             }
         }
+        private void mostrarError(string msj)
+        {
 
+            string script = $"mostrarMensaje({msj});";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
+        }
 
         private List<int> ProductoAscendete()
         {
@@ -29,6 +35,8 @@ namespace Fase3_POO
 
             var minPrice = Convert.ToDecimal(txtMinPrice.Text);
             var maxPrice = Convert.ToDecimal(txtMaxPrice.Text);
+
+            List<int> idsProductos = new List<int>();
 
 
             try
@@ -39,18 +47,26 @@ namespace Fase3_POO
                                orderby producto.COSTO_PRODUCTO ascending
                                select producto.ID_PRODUCTO;
 
-                List<int> idsProductos = consulta.ToList();
+                if (consulta.Count() > 0)
+                {
+                    idsProductos = consulta.ToList();
+                    return idsProductos;
 
-                return idsProductos;
-
+                }
+                else
+                {
+                    mostrarError("No se encontraron productos");
+                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                mostrarError(ex.Message);
+
             }
 
+            return idsProductos;
 
         }
 
@@ -61,6 +77,7 @@ namespace Fase3_POO
             var minPrice = Convert.ToDecimal(txtMinPrice.Text);
             var maxPrice = Convert.ToDecimal(txtMaxPrice.Text);
 
+            List<int> idsProductos = new List<int>();
 
             try
             {
@@ -70,17 +87,27 @@ namespace Fase3_POO
                                orderby producto.COSTO_PRODUCTO descending
                                select producto.ID_PRODUCTO;
 
-                List<int> idsProductos = consulta.ToList();
+                if (consulta.Count() > 0)
+                {
+                    idsProductos = consulta.ToList();
+                    return idsProductos;
 
-                return idsProductos;
-
+                }
+                else
+                {
+                    mostrarError("No se encontraron productos");
+                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                mostrarError(ex.Message);
+
             }
+
+            return idsProductos;
+
         }
 
         private void GenerarProductos()
@@ -108,7 +135,7 @@ namespace Fase3_POO
 
                     var consulta = from producto in dc.PRODUCTOS
                                    join imagen in dc.IMG_PRODUCTOS on producto.ID_PRODUCTO equals imagen.ID_PRODUCTO
-                                   where producto.ID_PRODUCTO == p 
+                                   where producto.ID_PRODUCTO == p
                                    select new
                                    {
                                        nombre = producto.NOMBRE_PRODUCTO,
@@ -117,24 +144,34 @@ namespace Fase3_POO
 
                                    };
 
-                    var primerElemento = consulta.FirstOrDefault();
+                    if (consulta.Count() > 0)
+                    {
+                        var primerElemento = consulta.FirstOrDefault();
 
-                    // Crea una nueva instancia del control Card y establece sus propiedades
-                    Card card = new Card();
-                    card.Id = p;
-                    card.Nombre = primerElemento.nombre;
-                    card.Costo = primerElemento.costo;
-                    card.Img = primerElemento.img;
+                        // Crea una nueva instancia del control Card y establece sus propiedades
+                        Card card = new Card();
+                        card.Id = p;
+                        card.Nombre = primerElemento.nombre;
+                        card.Costo = primerElemento.costo;
+                        card.Img = primerElemento.img;
 
-                    // Agrega la card al contenedor de productos
-                    Panel1.Controls.Add(card);
+                        // Agrega la card al contenedor de productos
+                        Panel1.Controls.Add(card);
+
+                    }
+                    else
+                    {
+                        mostrarError("No se encontrón el producto");
+                    }
+
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                mostrarError(ex.Message);
+
             }
 
         }
@@ -154,9 +191,10 @@ namespace Fase3_POO
                 return consulta;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Mensaje de no encontrado
+                mostrarError(ex.Message);
+
                 return 0;
             }
 

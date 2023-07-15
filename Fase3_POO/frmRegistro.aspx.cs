@@ -21,12 +21,6 @@ namespace Fase3_POO
                 ObtenerProvincias();
             }
 
-            //script = string.Format("mm('{0}');", "hola");
-            //ScriptManager.RegisterStartupScript(this,typeof(string), "MostrarError", script, true);
-
-            script = string.Format("mostrarModalJS();");
-            ScriptManager.RegisterStartupScript(this, typeof(string), "MostrarError", script, true);
-
         }
 
 
@@ -98,24 +92,24 @@ namespace Fase3_POO
                 }
                 else
                 {
-                    //Mensaje
+                    mostrarError(msj);
                 }
 
-                mostrarError();
+
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //solucion
+                mostrarError(ex.Message);
             }
 
         }
 
-        private void mostrarError()
+        private void mostrarError(string msj)
         {
 
-            string script = $"mm({"hola"});";
+            string script = $"mostrarMensaje({msj});";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarError", script, true);
         }

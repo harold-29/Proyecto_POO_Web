@@ -3,31 +3,33 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
+    <form runat="server">
 
-    <div class="container-xxl contenedor mb-5 my-5 row row-cols-1">
-        <aside class="bd-sidebar col">
-            <h3>Cuenta</h3>
+        <div class="container-xxl contenedor mb-5 my-5 row row-cols-1">
+            <aside class="bd-sidebar col">
+                <h3>Cuenta</h3>
 
-            <div class="row-cols-1">
+                <div class="row-cols-1">
 
-                <div class="col my-5">
-                    <a href="frmCliente.aspx" class="btn btn-warning">Información de cuenta</a>
+                    <div class="col my-5">
+                        <a href="frmCliente.aspx" class="btn btn-warning">Información de cuenta</a>
+                    </div>
+
+                    <div class="col my-5">
+                        <a href="frmCarrito.aspx" class="btn btn-warning">Carrito</a>
+                    </div>
+
+                    <div class="col my-5">
+                        <a href="frmPedidos.aspx" class="btn btn-warning">Historial de Pedidos</a>
+                    </div>
+                    <div class="col my-5">
+                        <asp:Button ID="btnLogout" runat="server" Text="Cerrar Sesión" OnClick="btnLogout_Click" class="btn btn-warning" />
+                    </div>
                 </div>
+            </aside>
+            <div class="container bd-main col">
+                <h2 class="h2">Carrito de Compra</h2>
 
-                <div class="col my-5">
-                    <a href="frmCarrito.aspx" class="btn btn-warning">Carrito</a>
-                </div>
-
-                <div class="col my-5">
-                    <a href="frmPedidos.aspx" class="btn btn-warning">Historial de Pedidos</a>
-                </div>
-
-            </div>
-        </aside>
-        <div class="container bd-main col">
-            <h2 class="h2">Carrito de Compra</h2>
-
-            <form runat="server">
 
                 <asp:GridView ID="gvCarrito" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" EmptyDataText="No se ingresado productos al carrito de compra" ForeColor="#333333" GridLines="None" Width="100%" OnRowDataBound="gvCarrito_RowDataBound">
                     <AlternatingRowStyle BackColor="White" />
@@ -66,11 +68,11 @@
                 </div>
 
 
-            </form>
 
+            </div>
         </div>
-    </div>
 
 
+    </form>
 
 </asp:Content>
