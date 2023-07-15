@@ -107,13 +107,18 @@ textarea {
     flex-direction: column;
 }
 
-.destacados .card-img-top {
+.destacados .card-img-top{
     width: 300px;
     height: 300px;
 }
 
 .destacados .row {
     text-align: center;
+}
+
+.productos .card-img-top {
+    width: 215px;
+    height: 215px;
 }
 
 .footer {
@@ -134,5 +139,6 @@ textarea {
 .destacados-panel .col .btn, .bd-sidebar .btn {
     width: 100%;
 }
+
 
 

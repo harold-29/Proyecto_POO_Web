@@ -73,11 +73,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Img\2\1.jpg" />
-    <Content Include="Assets\Img\2\2.jpg" />
-    <Content Include="Assets\Img\2\3.jpg" />
-    <Content Include="Assets\Img\2\4.jpg" />
-    <Content Include="Assets\Img\cancelar %281%29.png" />
+    <Content Include="Assets\Img\99b0e593f9237abf16df5cb1b1a87735.png" />
+    <Content Include="Assets\Img\promo.png" />
     <Content Include="Assets\Img\tienda.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -98,16 +95,6 @@
     <Content Include="Default.aspx" />
     <Content Include="Assets\BD_TIENDA_WEB.sql" />
     <Content Include="Assets\BD_TIENDA_WEB_TRIGGERS_SP.sql" />
-    <Content Include="Assets\Img\0-1 %281%29.jpg" />
-    <Content Include="Assets\Img\0-1 %282%29.jpg" />
-    <Content Include="Assets\Img\0-1 %283%29.jpg" />
-    <Content Include="Assets\Img\0-1 %284%29.jpg" />
-    <Content Include="Assets\Img\0-1 %285%29.jpg" />
-    <Content Include="Assets\Img\0-1 %286%29.jpg" />
-    <Content Include="Assets\Img\0-1.jpg" />
-    <Content Include="Assets\Img\99b0e593f9237abf16df5cb1b1a87735.png" />
-    <Content Include="Assets\Img\OIP.jpg" />
-    <Content Include="Assets\Img\promo.png" />
     <Content Include="frmAccesorios.aspx" />
     <Content Include="frmBusqueda.aspx" />
     <Content Include="frmCarrito.aspx" />
@@ -118,14 +105,14 @@
     <Content Include="frmProductos.aspx" />
     <Content Include="frmRegistro.aspx" />
     <Content Include="frmTecnologia.aspx" />
-    <Content Include="Script.js" />
+    <Content Include="JSPropios\Script.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Styles.css" />
+    <Content Include="CSSPropios\Styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +252,7 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

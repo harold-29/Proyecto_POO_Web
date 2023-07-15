@@ -13,7 +13,7 @@
 
         <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
 
-            <asp:Panel ID="pnlImagenes" runat="server" class="col px-5">
+            <asp:Panel ID="pnlImagenes" runat="server" class="col px-5 producto">
             </asp:Panel>
 
             <div class="col m-auto my-auto">

@@ -43,7 +43,7 @@
         </aside>
         <div class="container bd-main">
             <h1 class="mb-5 row">Accesorios</h1>
-            <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3">
+            <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3 productos">
             </asp:Panel>
         </div>
 

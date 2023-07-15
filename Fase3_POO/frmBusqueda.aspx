@@ -43,7 +43,7 @@
         </aside>
         <div class="container bd-main">
             <asp:Label ID="lblFiltrado" runat="server" Text="." CssClass="mb-5 row h1"></asp:Label>
-            <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3">
+            <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3 productos">
             </asp:Panel>
         </div>
     </div>

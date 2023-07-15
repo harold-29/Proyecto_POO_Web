@@ -21,12 +21,12 @@
                     <p>Precio máximo</p>
                     <asp:TextBox ID="txtMaxPrice" runat="server" class="form-control"></asp:TextBox>
                 </div>
-                
                 <div class="col mt-4 mb-2">
                     <asp:Button ID="btnFiltro" runat="server" Text="Filtrar" OnClick="btnFiltro_Click" CssClass="btn btn-warning"/>
 
                 </div>
 
+                <hr />
 
                 <div class="col">
                     <p>Orden:</p>
@@ -46,7 +46,7 @@
         </aside>
         <div class="container bd-main ">
             <h1 class="mb-5 row">Tecnología</h1>
-            <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3">
+            <asp:Panel ID="Panel1" runat="server" class="row row-cols-1 row-cols-md-4 g-4 mb-3 productos">
             </asp:Panel>
         </div>
     </div>
