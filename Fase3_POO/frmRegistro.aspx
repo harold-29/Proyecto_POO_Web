@@ -42,7 +42,7 @@
 
                 <div class="col mt-2">
                     <p>Correo Electrónico</p>
-                    <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" CssClass="form-control" TextMode="Email"></asp:TextBox>
                 </div>
 
 
@@ -67,10 +67,7 @@
                 <div class="col mt-2">
                     <p>Fecha de nacimiento</p>
                     <%--<asp:Calendar ID="calFechaNacimiento" runat="server" SelectionMode="DayWeekMonth"></asp:Calendar>--%>
-                    <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="form-control" placeholder="Ejemplo: 1999-12-31"></asp:TextBox>
-                    <span id="datetimepicker" class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                    <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage='El campo "Fecha de Nacimiento" es requerido' ControlToValidate="txtFechaNacimiento" Text="*" ValidationGroup="Registro"></asp:RequiredFieldValidator>
 
                 </div>
@@ -91,28 +88,6 @@
 
                 <div class="col my-5 ">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Registro" />
-                </div>
-            </div>
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalError">
-                Launch static backdrop modal
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="modalError" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Algo salio mal!!</h1>
-                        </div>
-                        <div class="modal-body">
-                            <p id="mensaje" runat="server">.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
                 </div>
             </div>
 

@@ -65,7 +65,7 @@
 
                     <div class="col mt-2">
                         <p>Correo Electrónico</p>
-                        <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" CssClass="form-control" TextMode="Email"></asp:TextBox>
                     </div>
 
 
@@ -89,13 +89,8 @@
 
                     <div class="col mt-2">
                         <p>Fecha de nacimiento</p>
-                        <%--<asp:Calendar ID="calFechaNacimiento" runat="server" SelectionMode="DayWeekMonth"></asp:Calendar>--%>
-                        <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="form-control"></asp:TextBox>
-                        <span id="datetimepicker" class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
+                        <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage='El campo "Fecha de Nacimiento" es requerido' ControlToValidate="txtFechaNacimiento" Text="*" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-
                     </div>
 
                 </div>

@@ -12,6 +12,12 @@ namespace Fase3_POO
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!string.IsNullOrEmpty(Convert.ToString(Session["idCliente"])))
+            {
+                txtUsuario.Text = Convert.ToString(Session["idCliente"]);
+                Session["idCliente"] = string.Empty;
+            }
+
         }
         private void mostrarError(string msj)
         {

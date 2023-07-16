@@ -86,8 +86,8 @@ namespace Fase3_POO
                 {
                     dc.SP_AGREGAR_ACTUALIZAR_CLIENTE(ref i, txtID.Text, txtNombre.Text, txtApellido1.Text, txtApellido2.Text, txtEmail.Text, txtTelefono.Text, ddlProvincia.Text, txtCanton.Text, txtDireccion.Value, fn, ref msj);
 
-                    Session["CODCliente"] = i;
-
+                    Session["idCLiente"] = txtID.Text;
+                    Response.Redirect("frmLogin.aspx");
 
                 }
                 else

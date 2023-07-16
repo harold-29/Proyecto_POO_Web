@@ -14,10 +14,10 @@ namespace Fase3_POO
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            idC = Convert.ToInt32(Session["CODCliente"]);
 
             if (!IsPostBack)
             {
-                idC = Convert.ToInt32(Session["CODCliente"]);
 
                 ObtenerCliente(idC);
 
@@ -70,7 +70,7 @@ namespace Fase3_POO
                 var cliente = consulta.FirstOrDefault();
 
 
-                if (consulta != null)
+                if (cliente != null)
                 {
                     txtNombre.Text = cliente.NOMBRE;
                     txtApellido1.Text = cliente.APELLIDO1;
